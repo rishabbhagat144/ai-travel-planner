@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WanderAI – AI Travel Planner for Students</title>
+  <meta name="description" content="WanderAI helps students plan budget-friendly, personalized travel itineraries powered by AI. Explore destinations, set your budget, and get your perfect trip plan instantly." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <span class="logo-icon">✈️</span>
+        <span class="logo-text">Wander<span class="logo-accent">AI</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#destinations" class="nav-link">Destinations</a></li>
+        <li><a href="#planner" class="nav-link">Plan Trip</a></li>
+        <li><a href="#budget" class="nav-link">Budget</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="#planner" class="btn-primary-sm">Start Planning</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="hero-orb orb1"></div>
+      <div class="hero-orb orb2"></div>
+      <div class="hero-orb orb3"></div>
+      <div class="grid-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span>AI-Powered • Student-Friendly • Budget-Smart</span>
+      </div>
+      <h1 class="hero-title">
+        Your Dream Trip,<br />
+        <span class="gradient-text">Planned by AI</span><br />
+        in Seconds.
+      </h1>
+      <p class="hero-subtitle">
+        Stop spending hours on travel research. WanderAI generates personalized, 
+        budget-friendly itineraries instantly — designed specifically for students.
+      </p>
+      <div class="hero-actions">
+        <a href="#planner" class="btn-primary">
+          <span>Plan My Trip</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#features" class="btn-ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>
+          <span>See How It Works</span>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number" id="stat1">50K+</span>
+          <span class="stat-label">Students Helped</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number" id="stat2">120+</span>
+          <span class="stat-label">Destinations</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number" id="stat3">4.9★</span>
+          <span class="stat-label">Average Rating</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="floating-card card1">
+        <div class="card-icon">🗺️</div>
+        <div class="card-info">
+          <span class="card-title">Goa, India</span>
+          <span class="card-detail">3 days • ₹4,500</span>
+        </div>
+      </div>
+      <div class="floating-card card2">
+        <div class="card-icon">🤖</div>
+        <div class="card-info">
+          <span class="card-title">AI Itinerary Ready!</span>
+          <span class="card-detail">Personalized for you</span>
+        </div>
+      </div>
+      <div class="floating-card card3">
+        <div class="card-icon">💰</div>
+        <div class="card-info">
+          <span class="card-title">Budget Saved</span>
+          <span class="card-detail">30% below average</span>
+        </div>
+      </div>
+      <div class="globe-container">
+        <div class="globe">
+          <div class="globe-ring ring1"></div>
+          <div class="globe-ring ring2"></div>
+          <div class="globe-ring ring3"></div>
+          <div class="globe-dot dot1">📍</div>
+          <div class="globe-dot dot2">📍</div>
+          <div class="globe-dot dot3">📍</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Why WanderAI?</span>
+        <h2 class="section-title">Everything a student traveler needs</h2>
+        <p class="section-subtitle">We combine AI intelligence with real budget constraints to craft the perfect trip for every student.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card" data-aos="fade-up" data-delay="0">
+          <div class="feature-icon-wrap" style="--icon-color: #6C63FF;">
+            <span class="feature-icon">🤖</span>
+          </div>
+          <h3>AI-Powered Itineraries</h3>
+          <p>Our generative AI creates day-by-day plans tailored to your interests, travel style, and budget — in seconds.</p>
+          <div class="feature-tag">Powered by Gemini</div>
+        </div>
+        <div class="feature-card" data-aos="fade-up" data-delay="100">
+          <div class="feature-icon-wrap" style="--icon-color: #00D9A3;">
+            <span class="feature-icon">💰</span>
+          </div>
+          <h3>Budget Optimizer</h3>
+          <p>Set your total budget and watch AI split it smartly across accommodation, food, transport, and activities.</p>
+          <div class="feature-tag">Smart Splits</div>
+        </div>
+        <div class="feature-card" data-aos="fade-up" data-delay="200">
+          <div class="feature-icon-wrap" style="--icon-color: #FF6B6B;">
+            <span class="feature-icon">🗺️</span>
+          </div>
+          <h3>Interactive Maps</h3>
+          <p>Visualize your entire trip on a live map. See attractions, hotels, and routes at a glance with no extra effort.</p>
+          <div class="feature-tag">Live Maps</div>
+        </div>
+        <div class="feature-card" data-aos="fade-up" data-delay="300">
+          <div class="feature-icon-wrap" style="--icon-color: #FFB347;">
+            <span class="feature-icon">🎒</span>
+          </div>
+          <h3>Student Deals</h3>
+          <p>Get exclusive student discounts on hostels, buses, and attractions curated from verified providers.</p>
+          <div class="feature-tag">Verified Deals</div>
+        </div>
+        <div class="feature-card" data-aos="fade-up" data-delay="400">
+          <div class="feature-icon-wrap" style="--icon-color: #A8EDEA;">
+            <span class="feature-icon">👥</span>
+          </div>
+          <h3>Group Trip Planner</h3>
+          <p>Planning with friends? Split costs, coordinate preferences, and create one unified itinerary for the whole group.</p>
+          <div class="feature-tag">Collaborative</div>
+        </div>
+        <div class="feature-card" data-aos="fade-up" data-delay="500">
+          <div class="feature-icon-wrap" style="--icon-color: #FD79A8;">
+            <span class="feature-icon">📱</span>
+          </div>
+          <h3>Offline Access</h3>
+          <p>Download your itinerary before the trip. Access maps, schedules, and tips even without internet abroad.</p>
+          <div class="feature-tag">Offline Ready</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Destinations Section -->
+  <section class="destinations" id="destinations">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Top Picks</span>
+        <h2 class="section-title">Popular student destinations</h2>
+        <p class="section-subtitle">Handpicked places loved by student travelers — affordable, exciting, and full of memories to make.</p>
+      </div>
+      <div class="dest-filter">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="beach">🏖️ Beach</button>
+        <button class="filter-btn" data-filter="city">🏙️ City</button>
+        <button class="filter-btn" data-filter="nature">🌿 Nature</button>
+        <button class="filter-btn" data-filter="heritage">🏛️ Heritage</button>
+      </div>
+      <div class="destinations-grid" id="destinations-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Planner Section -->
+  <section class="planner" id="planner">
+    <div class="container">
+      <div class="planner-inner">
+        <div class="planner-left">
+          <span class="section-tag">AI Trip Planner</span>
+          <h2 class="section-title">Tell us your dream, <br /><span class="gradient-text">we'll make it real</span></h2>
+          <p class="section-subtitle">Fill in a few quick details and our AI will generate a complete, personalized itinerary for your trip.</p>
+          <div class="planner-steps">
+            <div class="step active" id="step-indicator-1">
+              <div class="step-num">1</div>
+              <div class="step-text">Your Destination</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" id="step-indicator-2">
+              <div class="step-num">2</div>
+              <div class="step-text">Trip Details</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" id="step-indicator-3">
+              <div class="step-num">3</div>
+              <div class="step-text">Preferences</div>
+            </div>
+          </div>
+        </div>
+        <div class="planner-right">
+          <div class="planner-form-container">
+            <!-- Step 1 -->
+            <div class="form-step active" id="form-step-1">
+              <h3>Where do you want to go?</h3>
+              <div class="form-group">
+                <label>Destination City or Country</label>
+                <div class="input-icon-wrap">
+                  <span class="input-icon">📍</span>
+                  <input type="text" id="destination" placeholder="e.g. Goa, Manali, Bangkok..." class="form-input" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Departing From</label>
+                <div class="input-icon-wrap">
+                  <span class="input-icon">🏠</span>
+                  <input type="text" id="from-city" placeholder="e.g. Mumbai, Delhi..." class="form-input" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Popular Quick Picks</label>
+                <div class="quick-picks">
+                  <button class="quick-pick-btn" onclick="selectDestination('Goa')">🏖️ Goa</button>
+                  <button class="quick-pick-btn" onclick="selectDestination('Manali')">🏔️ Manali</button>
+                  <button class="quick-pick-btn" onclick="selectDestination('Jaipur')">🏰 Jaipur</button>
+                  <button class="quick-pick-btn" onclick="selectDestination('Pondicherry')">🌊 Pondi</button>
+                  <button class="quick-pick-btn" onclick="selectDestination('Varanasi')">🛕 Varanasi</button>
+                  <button class="quick-pick-btn" onclick="selectDestination('Coorg')">🌿 Coorg</button>
+                </div>
+              </div>
+              <button class="btn-primary" onclick="nextStep(2)" id="step1-btn">Next: Trip Details →</button>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="form-step" id="form-step-2">
+              <h3>Tell us about your trip</h3>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Start Date</label>
+                  <input type="date" id="start-date" class="form-input" />
+                </div>
+                <div class="form-group">
+                  <label>End Date</label>
+                  <input type="date" id="end-date" class="form-input" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Travelers</label>
+                  <div class="traveler-counter">
+                    <button onclick="changeTravelers(-1)" class="counter-btn">−</button>
+                    <span id="traveler-count">2</span>
+                    <button onclick="changeTravelers(1)" class="counter-btn">+</button>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Trip Type</label>
+                  <select id="trip-type" class="form-input">
+                    <option value="leisure">🌴 Leisure</option>
+                    <option value="adventure">🧗 Adventure</option>
+                    <option value="cultural">🏛️ Cultural</option>
+                    <option value="beach">🏖️ Beach</option>
+                    <option value="food">🍜 Food Trip</option>
+                    <option value="spiritual">🛕 Spiritual</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Total Budget (₹ per person)</label>
+                <div class="budget-slider-wrap">
+                  <input type="range" id="budget-range" min="2000" max="50000" value="10000" step="500" class="budget-slider" oninput="updateBudgetDisplay(this.value)" />
+                  <div class="budget-display">
+                    <span>₹</span><span id="budget-value">10,000</span>
+                  </div>
+                </div>
+                <div class="budget-labels">
+                  <span>₹2,000</span>
+                  <span>Budget</span>
+                  <span>Comfort</span>
+                  <span>₹50,000</span>
+                </div>
+              </div>
+              <div class="form-nav">
+                <button class="btn-ghost" onclick="nextStep(1)">← Back</button>
+                <button class="btn-primary" onclick="nextStep(3)">Next: Preferences →</button>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="form-step" id="form-step-3">
+              <h3>Customize your experience</h3>
+              <div class="form-group">
+                <label>Interests (select all that apply)</label>
+                <div class="interests-grid">
+                  <button class="interest-btn" onclick="toggleInterest(this)">🍜 Local Food</button>
+                  <button class="interest-btn" onclick="toggleInterest(this)">🏄 Water Sports</button>
+                  <button class="interest-btn" onclick="toggleInterest(this)">📸 Photography</button>
+                  <button class="interest-btn" onclick="toggleInterest(this)">🎭 Nightlife</button>
+                  <button class="interest-btn" onclick="toggleInterest(this)">🏛️ History</button>
+                  <button class="interest-btn" onclick="toggleInterest(this)">🧘 Wellness</button>
+                  <button class="interest-btn" onclick="toggleInterest(this)">🛍️ Shopping</button>
+                  <button class="interest-btn" onclick="toggleInterest(this)">🎵 Music</button>
+                  <button class="interest-btn" onclick="toggleInterest(this)">🥾 Trekking</button>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Accommodation Style</label>
+                <div class="accom-options">
+                  <label class="accom-option">
+                    <input type="radio" name="accom" value="hostel" checked />
+                    <div class="accom-card">🛏️ Hostel<br /><small>Budget</small></div>
+                  </label>
+                  <label class="accom-option">
+                    <input type="radio" name="accom" value="guesthouse" />
+                    <div class="accom-card">🏡 Guesthouse<br /><small>Comfort</small></div>
+                  </label>
+                  <label class="accom-option">
+                    <input type="radio" name="accom" value="hotel" />
+                    <div class="accom-card">🏨 Hotel<br /><small>Premium</small></div>
+                  </label>
+                </div>
+              </div>
+              <div class="form-nav">
+                <button class="btn-ghost" onclick="nextStep(2)">← Back</button>
+                <button class="btn-primary generate-btn" onclick="generateItinerary()" id="generate-btn">
+                  <span class="btn-text">✨ Generate AI Itinerary</span>
+                  <span class="btn-loader" style="display:none;">⏳ AI is thinking...</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Itinerary Output Section -->
+  <section class="itinerary-section" id="itinerary-output" style="display:none;">
+    <div class="container">
+      <div class="itinerary-header">
+        <div class="itin-title-area">
+          <span class="section-tag">Your AI Itinerary ✨</span>
+          <h2 class="section-title" id="itin-main-title">Your Trip to Goa</h2>
+          <div class="itin-meta" id="itin-meta"></div>
+        </div>
+        <div class="itin-actions">
+          <button class="btn-ghost" onclick="printItinerary()">🖨️ Print</button>
+          <button class="btn-primary-sm" onclick="scrollToPlanner()">✏️ Edit Trip</button>
+        </div>
+      </div>
+
+      <!-- Budget Overview -->
+      <div class="budget-overview" id="budget-overview"></div>
+
+      <!-- Map -->
+      <div class="map-section">
+        <h3>🗺️ Trip Map</h3>
+        <div id="trip-map" class="trip-map"></div>
+      </div>
+
+      <!-- Day-by-day itinerary -->
+      <div class="days-container" id="days-container"></div>
+
+      <!-- Tips Section -->
+      <div class="travel-tips" id="travel-tips"></div>
+    </div>
+  </section>
+
+  <!-- Budget Calculator Section -->
+  <section class="budget-section" id="budget">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Budget Planner</span>
+        <h2 class="section-title">Plan smarter, travel more</h2>
+        <p class="section-subtitle">Break down your travel budget across every category with our smart calculator.</p>
+      </div>
+      <div class="budget-calc-grid">
+        <div class="budget-inputs-card">
+          <h3>Set Your Budget</h3>
+          <div class="budget-input-row">
+            <label>Total Budget (₹)</label>
+            <input type="number" id="total-budget" class="form-input" value="15000" oninput="recalcBudget()" />
+          </div>
+          <div class="budget-input-row">
+            <label>Days</label>
+            <input type="number" id="budget-days" class="form-input" value="3" min="1" max="30" oninput="recalcBudget()" />
+          </div>
+          <div class="budget-input-row">
+            <label>Travelers</label>
+            <input type="number" id="budget-travelers" class="form-input" value="2" min="1" max="20" oninput="recalcBudget()" />
+          </div>
+          <div class="budget-sliders">
+            <div class="bslider-row">
+              <div class="bslider-label">
+                <span>🏨 Accommodation</span>
+                <span id="accom-pct">35%</span>
+              </div>
+              <input type="range" class="budget-slider" id="accom-slider" min="10" max="60" value="35" oninput="recalcBudget()" />
+            </div>
+            <div class="bslider-row">
+              <div class="bslider-label">
+                <span>🚌 Transport</span>
+                <span id="transport-pct">25%</span>
+              </div>
+              <input type="range" class="budget-slider" id="transport-slider" min="10" max="50" value="25" oninput="recalcBudget()" />
+            </div>
+            <div class="bslider-row">
+              <div class="bslider-label">
+                <span>🍜 Food</span>
+                <span id="food-pct">25%</span>
+              </div>
+              <input type="range" class="budget-slider" id="food-slider" min="10" max="50" value="25" oninput="recalcBudget()" />
+            </div>
+            <div class="bslider-row">
+              <div class="bslider-label">
+                <span>🎡 Activities</span>
+                <span id="activity-pct">15%</span>
+              </div>
+              <input type="range" class="budget-slider" id="activity-slider" min="5" max="40" value="15" oninput="recalcBudget()" />
+            </div>
+          </div>
+        </div>
+        <div class="budget-breakdown-card">
+          <h3>Budget Breakdown</h3>
+          <div class="donut-wrap">
+            <canvas id="budget-donut" width="220" height="220"></canvas>
+            <div class="donut-center">
+              <span id="donut-total">₹15,000</span>
+              <small>Total</small>
+            </div>
+          </div>
+          <div class="breakdown-list" id="breakdown-list"></div>
+        </div>
+        <div class="budget-tips-card">
+          <h3>💡 Student Saving Tips</h3>
+          <div class="tips-list">
+            <div class="tip-item">
+              <span class="tip-icon">🚂</span>
+              <div>
+                <strong>Book trains in advance</strong>
+                <p>IRCTC general or tatkal can save 40-60% vs buses on long routes.</p>
+              </div>
+            </div>
+            <div class="tip-item">
+              <span class="tip-icon">🏕️</span>
+              <div>
+                <strong>Choose hostels & Airbnbs</strong>
+                <p>Hostels cost ₹400–800/night, often including breakfast and social vibes.</p>
+              </div>
+            </div>
+            <div class="tip-item">
+              <span class="tip-icon">🍱</span>
+              <div>
+                <strong>Eat where locals eat</strong>
+                <p>Street food and local dhabas offer authentic meals for ₹50–150.</p>
+              </div>
+            </div>
+            <div class="tip-item">
+              <span class="tip-icon">🎟️</span>
+              <div>
+                <strong>Get student ID discounts</strong>
+                <p>ASI monuments give 75% off to Indian students with valid ID.</p>
+              </div>
+            </div>
+            <div class="tip-item">
+              <span class="tip-icon">📅</span>
+              <div>
+                <strong>Travel off-season</strong>
+                <p>Prices drop 30–50% in shoulder and off seasons. Check our calendar.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Student Stories</span>
+        <h2 class="section-title">Real trips, real savings</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p>"WanderAI planned my Manali trip in under 3 minutes! Saved ₹6,000 compared to a travel agency with a better itinerary."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">🧑‍🎓</div>
+            <div>
+              <strong>Arjun M.</strong>
+              <span>IIT Delhi, 3rd Year</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card featured">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p>"We were 6 friends with different budgets. WanderAI handled everything — split costs, found hostels, and even suggested the best cafes in Goa!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">👩‍🎓</div>
+            <div>
+              <strong>Priya S.</strong>
+              <span>BITS Pilani, Final Year</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p>"The budget breakdown was spot-on. First solo trip to Pondicherry and I didn't stress about money once. This app is a game-changer."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">🧑‍💻</div>
+            <div>
+              <strong>Riya K.</strong>
+              <span>VIT Vellore, 2nd Year</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-bg">
+      <div class="cta-orb cta-orb1"></div>
+      <div class="cta-orb cta-orb2"></div>
+    </div>
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to plan your next adventure?</h2>
+        <p>Join 50,000+ students who travel smarter with WanderAI. It's free, fast, and designed for you.</p>
+        <a href="#planner" class="btn-primary btn-large">
+          <span>🚀 Start Planning for Free</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <span class="logo-icon">✈️</span>
+            <span class="logo-text">Wander<span class="logo-accent">AI</span></span>
+          </a>
+          <p>AI-powered travel planning built for student explorers. Free forever.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+            <a href="#" class="social-link" aria-label="Instagram">📸</a>
+            <a href="#" class="social-link" aria-label="YouTube">▶️</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#destinations">Destinations</a></li>
+            <li><a href="#planner">Plan a Trip</a></li>
+            <li><a href="#budget">Budget Calculator</a></li>
+            <li><a href="#features">Features</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>For Students</h4>
+          <ul>
+            <li><a href="#">Student Discounts</a></li>
+            <li><a href="#">Group Travel</a></li>
+            <li><a href="#">Safety Tips</a></li>
+            <li><a href="#">Travel Blogs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 WanderAI. Made with ❤️ for student explorers.</p>
+        <p>Built with AI • Free Forever • No hidden fees</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
