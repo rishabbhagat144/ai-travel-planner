@@ -13,6 +13,7 @@ All code runs in the browser; no backend is required.
 
 🗂️ Project Structure
 ai‑travel‑planner/
+
 ├─ index.html      # page markup (hero, features, destinations, planner, budget, etc.)
 ├─ style.css       # design system, animations, responsive styles
 └─ app.js          # UI logic, itinerary generation, map, budget calculator
