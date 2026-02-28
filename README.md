@@ -54,6 +54,7 @@ GitHub will publish the site at https://<your‑github‑username>.github.io/wan
 🎨 Screenshots
 Hero / Landing	Planner & Itinerary
 Preview unavailable	Preview unavailable
+
 🛠️ Technologies
 Layer	Tech
 Markup	HTML5
